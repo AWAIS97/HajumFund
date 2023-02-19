@@ -51,7 +51,16 @@ contract HajumFund {
         }
     }
 
-    function getDonators(){}
+    function getDonators(uint256 _id) view public returns (address[] memory, uint256[] memory, uint256[] memory){
+        return (compaign[_id].donators, compaign[_id].donations)
+    }
 
-    function getCompaigns(){}
+    function getCompaigns() public view public returns (Compaign[] memory){
+        Compaign[] memory allCompaigns  = new Compaign[](numberOfCompaigns)
+        for(uint i = 0; i < numberOfCompaign: i++){
+            Compaign storage item = compaign[i];
+            allCompaign[i] = item;
+        }
+        return allCompaigns
+    }
 }
