@@ -62,14 +62,16 @@ const Navbar = () => {
         />
 
         <div
-          className={`absolute top-[60px] right-0 left-0 bg-[#1c1c24] z-10 shadow-secondary py-4 ${!toogleDrawer} ? '-translate-y-[100vh]' : 'translate-y-[0]' transition-all duration-700 `}
+          className={`absolute top-[60px] right-0 left-0 bg-[#1c1c24] z-10 shadow-secondary py-4 ${
+            !toogleDrawer ? "-translate-y-[100vh]" : "translate-y-0"
+          } transition-all duration-700 `}
         >
           <ul className="mb-4">
             {navlinks.map((link) => (
               <li
                 key={link.name}
                 className={`flex p-4 ${
-                  isActive === link.name && "bg-[#3a3a43"
+                  isActive === link.name && "bg-[#3a3a43]"
                 }`}
                 onClick={() => {
                   setisActive(link.name);
