@@ -8,7 +8,7 @@ import { CustomButton, FormField } from "../components";
 import { checkIfImage } from "../utils";
 
 const CreateCampaign = () => {
-  const navigation = useNavigate();
+  const navigate = useNavigate();
   const [isLoading, setIsloading] = useState(false);
   const { createCampaign } = useStateContext();
   const [form, setForm] = useState({
@@ -28,9 +28,20 @@ const CreateCampaign = () => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await createCampaign({
-      ...form,
-      target: ethers.utils.parseUnits(form.target, 18),
+
+    checkIfImage(form.image, async (exists) => {
+      if (exists) {
+        setIsloading(true);
+        await createCampaign({
+          ...form,
+          target: ethers.utils.parseUnits(form.target, 18),
+        });
+        setIsloading(true);
+        navigate("/");
+      } else {
+        alert("Provide valid Url");
+        setForm({ ...form, image: "" });
+      }
     });
   };
 

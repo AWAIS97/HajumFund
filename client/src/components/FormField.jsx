@@ -10,7 +10,7 @@ const FormField = (props) => {
         </span>
       )}
       {isTextArea ? (
-        <texarea
+        <textarea
           required
           value={value}
           onChange={handleChange}

@@ -13,9 +13,9 @@ export const StateContextProvider = ({ children }) => {
   const { contract } = useContract(
     "0x58c418EB81Dc915D117BA1DDeDD5D162C446EA11"
   );
-  const { mutateAsync: createCampaign } = useContractWrite(
+  const { mutateAsync: createCompaign } = useContractWrite(
     contract,
-    "createCampaign"
+    "createCompaign"
   );
 
   const address = useAddress();
@@ -23,7 +23,7 @@ export const StateContextProvider = ({ children }) => {
 
   const publishCampaign = async (form) => {
     try {
-      const data = await createCampaign([
+      const data = await createCompaign([
         address, // owner
         form.title,
         form.description,
@@ -35,7 +35,7 @@ export const StateContextProvider = ({ children }) => {
   };
   return (
     <StateContext.Provider
-      value={{ address, contract, createCampaign: publishCampaign }}
+      value={{ address, contract, connect, createCampaign: publishCampaign }}
     >
       {children}
     </StateContext.Provider>
