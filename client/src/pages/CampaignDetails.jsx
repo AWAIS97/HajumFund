@@ -110,7 +110,7 @@ const CampaignDetails = () => {
             </h4>
             <div className="mt-[20px flex flex-col gap-4]">
               {donators.length > 0 ? (
-                donators.map((item) => (
+                donators.map((item,index) => (
                   <div
                     key={`${item.donator}-${index}`}
                     className=" flex justify-between items-center gap-4"
